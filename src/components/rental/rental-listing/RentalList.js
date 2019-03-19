@@ -5,7 +5,6 @@ export class RentalList extends React.Component {
 
     renderRentals() {
         return this.props.rentals.map((rental, index) => {
-            console.log(rental);
             return (
                 <RentalCard
                     rental={rental}

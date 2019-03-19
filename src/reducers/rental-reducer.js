@@ -1,4 +1,4 @@
-import { FETCH_RENTALS,
+import { FETCH_RENTALS_SUCCESS,
          FETCH_RENTAL_BY_ID_SUCCESS,
          FETCH_RENTAL_BY_ID_INIT} from '../actions/types';
 const INITIAL_STATE = {
@@ -10,10 +10,9 @@ const INITIAL_STATE = {
     }
 }
 export const rentalReducer = (state = INITIAL_STATE.rentals, action) => {
-    debugger;
 
     switch(action.type) {
-        case FETCH_RENTALS:
+        case FETCH_RENTALS_SUCCESS:
             return {...state, data: action.rentals};
 
         default:
@@ -29,7 +28,6 @@ export const selectedRentalReducer = (state = INITIAL_STATE.rental, action) => {
 
         case FETCH_RENTAL_BY_ID_SUCCESS:
             //return Object.assign({}, state, { data: action.rental}); //is same as below line
-            debugger;
             return {...state, data: action.rental};
 
         default:
