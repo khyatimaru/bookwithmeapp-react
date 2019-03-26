@@ -23,7 +23,9 @@ const userSchema = new Schema({
         min: [4, 'Too short, min is 4 characters'],
         max: [32, 'Too long, max is 32 characters']
     },
-    rentals: [{ type: Schema.Types.ObjectId, ref: 'Rental'}]
+    rentals: [{ type: Schema.Types.ObjectId, ref: 'Rental'}],
+    bookings: [{ type: Schema.Types.ObjectId, ref: 'Booking'}]
+
 });
 
 userSchema.pre('save', function (next) {
