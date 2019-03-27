@@ -78,7 +78,7 @@ export const checkAuthState = () => {
 
 export const login = (userData) => {
     return dispatch => {
-        return axios.post('/api/v1/users/auth', {...userData})
+        return axios.post('/api/v1/users/auth', userData)
             .then(res => res.data)
             .then(token => {
                 authService.saveToken(token);
@@ -87,8 +87,6 @@ export const login = (userData) => {
             .catch(error => {
                 dispatch(loginFailure(error.response.data.errors));
             });
-
-
     }
 }
 
@@ -98,6 +96,13 @@ export const logout = () => {
         type: LOGOUT
     }
 }
+
+export const createBooking = (booking) => {
+    return axiosInstance.post('/bookings', booking)
+        .then(res => res.data)
+        .catch(({response}) => Promise.reject(response.data.errors))
+}
+
 const loginSuccess = () => {
     return {
         type: LOGIN_SUCCESS
@@ -110,3 +115,4 @@ const loginFailure = (errors) => {
         errors
     }
 }
+
