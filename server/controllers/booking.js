@@ -11,7 +11,7 @@ exports.createBooking = function (req, res) {
 
     const booking = new Booking({ startAt, endAt, totalPrice, guests, days });
 
-    Rental.findOne(rental._id)
+    Rental.findById(rental._id)
         .populate('bookings')
         .populate('user')
         .exec(function(err, foundRental) {
