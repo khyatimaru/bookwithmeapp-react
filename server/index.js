@@ -11,7 +11,7 @@ const rentalRoutes = require('./routes/rentals'),
 
 mongoose.connect(config.DB_URI, { useNewUrlParser: true }).then(()=> {
     const fakeDb = new FakeDb();
-    //fakeDb.seedDB();
+    //edd xefakeDb.seedDB();
 });
 
 const app = express();

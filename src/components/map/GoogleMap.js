@@ -94,7 +94,6 @@ function withGeoCode(WrappedComponent) {
                 },
                 (error) => {
                     this.setState({isError: true, isLocationLoaded: true});
-                    console.log('ERROR');
                 });
             }
         }

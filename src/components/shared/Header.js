@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import RentalSearchInput from 'components/rental/RentalSearchInput';
 
 class Header extends React.Component {
 
@@ -14,8 +15,7 @@ class Header extends React.Component {
         this.props.history.push('/login');
     }
 
-    renderAuthButtons() {
-        const { isAuth } = this.props.auth;
+    renderAuthButtons(isAuth) {
 
         if(isAuth) {
             return <a className='clickable nav-item nav-link' onClick={this.handleLogout}>Logout</a>
@@ -30,22 +30,36 @@ class Header extends React.Component {
         }
     }
 
+    renderOwnerSection(isAuth) {
+
+        if(isAuth) {
+            return(
+                <div className="nav-item dropdown clickable">
+                    <a
+                        className ='nav-link dropdown-toggle clickable'
+                        id='navbarDropdownMenuLink'
+                        data-toggle='dropdown'
+                        aria-haspopup='true'
+                        aria-expanded='false'>
+                        Owner Section
+                    </a>
+                    <div className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                        <Link className='dropdown-item' to='/rentals/create'>Create Rental</Link>
+                        <Link className='dropdown-item' to='#'>Manage Rentals</Link>
+                        <Link className='dropdown-item' to='#'>Manage Bookings</Link>
+                    </div>
+                </div>
+            );
+        }
+    }
     render() {
+        const {isAuth, username} = this.props.auth;
         return (
+
             <div className='navbar navbar-dark navbar-expand-lg'>
                 <div className='container'>
                     <Link to='/rentals' className='navbar-brand'>BookWithMe</Link>
-
-                    <form className='form-inline my-2 my-lg-0'>
-                        <input
-                            className='bookwithme-search form-control mr-sm-2'
-                            type='search'
-                            placeholder='Try "New York"'
-                            aria-label='Search'>
-                        </input>
-                        <button className='btn btn-outline-siccess my-2 my-sm-0 btn-bookwithme-search' type='submit'>Search</button>
-                    </form>
-
+                    <RentalSearchInput />
                     <button
                         className='navbar-toggler'
                         type='button'
@@ -59,7 +73,11 @@ class Header extends React.Component {
 
                     <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
                         <div className='navbar-nav ml-auto'>
-                            {this.renderAuthButtons()}
+                            { isAuth &&
+                                <a className = 'nav-item nav-link' > {username}</a>
+                            }
+                            {this.renderOwnerSection(isAuth)}
+                            {this.renderAuthButtons(isAuth)}
                         </div>
                     </div>
                 </div>

@@ -1,22 +1,17 @@
 import React from 'react';
 
-export const BookwithmeInput = ({
+export const BookwithmeTextArea = ({
     input,
     label,
     type,
+    rows,
     className,
-    symbol,
     meta: { touched, error, warning }
 }) => (
 <div className='form-group'>
     <label>{label}</label>
     <div className='input-group'>
-        {symbol &&
-            <div className='input-group-prepend'>
-                <div className='input-group-text'>{symbol}</div>
-            </div>
-        }
-        <input {...input} type={type} className={className} />
+        <textarea {...input} type={type} rows={rows} className={className} ></textarea>
     </div>
 
     {touched &&
