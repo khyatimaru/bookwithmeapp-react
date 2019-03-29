@@ -3,7 +3,8 @@ import { LOGIN_SUCCESS,
          LOGOUT } from '../actions/types';
 const INITIAL_STATE = {
     isAuth: false,
-    errors: []
+    errors: [],
+    username: ''
 
 }
 export const authReducer = (state = INITIAL_STATE, action) => {
@@ -11,13 +12,13 @@ export const authReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
     case LOGIN_SUCCESS:
             //return {...state, token: action.token};
-        return Object.assign({}, state, {isAuth: true, errors: []});
+        return Object.assign({}, state, {isAuth: true, errors: [], username: action.username});
 
     case LOGIN_FAILURE:
             return Object.assign({}, state, {errors: action.errors});
 
         case LOGOUT:
-            return Object.assign({}, state, {isAuth: false});
+            return Object.assign({}, state, {isAuth: false, username:''});
     default:
         return state;
 }
