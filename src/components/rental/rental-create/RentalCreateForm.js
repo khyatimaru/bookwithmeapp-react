@@ -54,6 +54,12 @@ const RentalCreateForm = props => {
             />
 
             <Field
+                name='image'
+                label='Image'
+                component={BookwithmeFileUpload}
+            />
+
+            <Field
                 name='bedrooms'
                 type='number'
                 className='form-control'
@@ -62,12 +68,6 @@ const RentalCreateForm = props => {
             />
 
             <Field
-                name='image'
-                label='Image'
-                component={BookwithmeFileUpload}
-            />
-
-        <Field
                 name='dailyRate'
                 type='number'
                 className='form-control'
