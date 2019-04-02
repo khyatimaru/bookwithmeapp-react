@@ -30,3 +30,5 @@ yarn-error.log*
 
 
 /server/config/dev.js
+
+yarn.lock
