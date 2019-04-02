@@ -18,12 +18,13 @@ class Header extends React.Component {
     renderAuthButtons(isAuth) {
 
         if(isAuth) {
+            // eslint-disable-next-line
             return <a className='clickable nav-item nav-link' onClick={this.handleLogout}>Logout</a>
         }
         else {
             return(
                 <React.Fragment>
-                    <Link className='nav-item nav-link active' to='/login'>Login <span className='sr-only'>(current)</span></Link>
+                    <Link className='nav-item nav-link' to='/login'>Login <span className='sr-only'>(current)</span></Link>
                     <Link className='nav-item nav-link' to='/register'>Register</Link>
                 </React.Fragment>
             );
@@ -35,14 +36,18 @@ class Header extends React.Component {
         if(isAuth) {
             return(
                 <div className="nav-item dropdown clickable">
+                {   // eslint-disable-next-line
                     <a
                         className ='nav-link dropdown-toggle clickable'
                         id='navbarDropdownMenuLink'
                         data-toggle='dropdown'
                         aria-haspopup='true'
                         aria-expanded='false'>
-                        Owner Section
+                            Owner Section
                     </a>
+                }
+
+
                     <div className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
                         <Link className='dropdown-item' to='/rentals/create'>Create Rental</Link>
                         <Link className='dropdown-item' to='/rentals/manage'>Manage Rentals</Link>
@@ -76,6 +81,7 @@ class Header extends React.Component {
                     <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
                         <div className='navbar-nav ml-auto'>
                             { isAuth &&
+                                // eslint-disable-next-line
                                 <a className = 'nav-item nav-link' > {username}</a>
                             }
                             {this.renderOwnerSection(isAuth)}
