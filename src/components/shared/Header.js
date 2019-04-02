@@ -45,8 +45,8 @@ class Header extends React.Component {
                     </a>
                     <div className='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
                         <Link className='dropdown-item' to='/rentals/create'>Create Rental</Link>
-                        <Link className='dropdown-item' to='#'>Manage Rentals</Link>
-                        <Link className='dropdown-item' to='#'>Manage Bookings</Link>
+                        <Link className='dropdown-item' to='/rentals/manage'>Manage Rentals</Link>
+                        <Link className='dropdown-item' to='/bookings/manage'>Manage Bookings</Link>
                     </div>
                 </div>
             );
@@ -58,7 +58,9 @@ class Header extends React.Component {
 
             <div className='navbar navbar-dark navbar-expand-lg'>
                 <div className='container'>
-                    <Link to='/rentals' className='navbar-brand'>BookWithMe</Link>
+                    <Link to='/rentals' className='navbar-brand'>BookWithMe
+                        <img src={process.env.PUBLIC_URL + '/img/react-logo.svg'} alt=''/>
+                    </Link>
                     <RentalSearchInput />
                     <button
                         className='navbar-toggler'
